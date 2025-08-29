@@ -4,7 +4,10 @@ The template contained within this repository can be used to deploy a Minecraft 
 
 ## 🔄 Fork Status
 
+This is a fork of the fork described below, whose purpose is to create a Bedrock server instead of a Java server.
+
 This is an updated fork of the original minecraft-spot-pricing project. The original repository has not been maintained for some time, so this fork includes:
+
 - Updated CloudFormation templates for current AWS services
 - Security improvements and best practices
 - Bug fixes and performance optimizations
@@ -14,18 +17,18 @@ This is an updated fork of the original minecraft-spot-pricing project. The orig
 ## Prerequisites
 
 1. A basic understanding of Amazon Web Services, specifically CloudFormation.
-2. An AWS Account. (checkout https://aws.amazon.com/free)
+2. An AWS Account. (check out https://aws.amazon.com/free)
 3. Basic knowledge of Linux administration (no more than what would be required to just use the `itzg/docker-minecraft-server` Docker image).
 
 ## Overview
 
 All of this is shamelessly copied and tweaked from the [Factorio Spot Pricing](https://github.com/m-chandler/factorio-spot-pricing) template.
 
-The solution builds upon the [itzg/docker-minecraft-server](https://github.com/itzg/docker-minecraft-server) Docker image, so generously curated by [the contributors](https://github.com/itzg/docker-minecraft-server/graphs/contributors) (thank you!). 
+The solution builds upon the [itzg/docker-minecraft-bedrock-server](https://github.com/itzg/docker-minecraft-bedrock-server) Docker image, so generously curated by [the contributors](https://github.com/itzg/docker-minecraft-bedrock-server/graphs/contributors) (thank you!).
 
 In a nutshell, the CloudFormation template launches an _ephemeral_ instance which joins itself to an Elastic Container Service (ECS) Cluster. Within this ECS Cluster, an ECS Service is configured to run a Minecraft Docker image. The ephemeral instance does not store any saves, mods, Minecraft config, data etc. - all of this state is stored on a network file system (Elastic File System - EFS).
 
-The CloudFormation template is configured to launch this ephemeral instance using spot pricing. What is spot pricing you might ask? It's a way to save up to 90% on regular "on demand" pricing in AWS. There are drawbacks however. You're effectively participating in an auction to get a cheap instance. If demand increases and someone else puts in a higher bid than you, your instance will terminate in a matter of minutes. 
+The CloudFormation template is configured to launch this ephemeral instance using spot pricing. What is spot pricing you might ask? It's a way to save up to 90% on regular "on demand" pricing in AWS. There are drawbacks however. You're effectively participating in an auction to get a cheap instance. If demand increases and someone else puts in a higher bid than you, your instance will terminate in a matter of minutes.
 
 A few notes on the services we're using...
 
