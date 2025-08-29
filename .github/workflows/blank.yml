@@ -19,5 +19,4 @@ jobs:
           aws-region: us-east-1
       - name: Copy cf.yml to S3 bucket
         run: |
-          aws s3 cp cf.yml s3://factorio-spot-pricing
-          
+          aws s3 cp cf.yml s3://minecraft-pe-spot-pricing
