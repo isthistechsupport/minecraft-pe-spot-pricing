@@ -192,10 +192,6 @@ Parameters:
       format: Area/Location (e.g. America/New_York)'
 
 Conditions:
-  MinecraftTypeTagProvided: !Not
-    - !Equals
-      - !Ref MinecraftTypeTag
-      - ''
   AdminPlayerNamesProvided: !Not
     - !Equals
       - !Ref AdminPlayerNames
@@ -665,11 +661,6 @@ Resources:
           Environment:
             - Name: EULA
               Value: 'TRUE'
-            - !If
-              - MinecraftTypeTagProvided
-              - Name: TYPE
-                Value: !Sub ${MinecraftTypeTag}
-              - !Ref AWS::NoValue
             - !If
               - AdminPlayerNamesProvided
               - Name: OPS
